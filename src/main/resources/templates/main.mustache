@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sweeter</title>
+</head>
+<body>
+
+
+
+
+<form action="/logout" method="post">
+    <input type="submit" value="Выйти"/>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+</form>
+<div>
+    Форма ввода
+    <form method="Post">
+
+        <input type="text" name="text" placeholder="Введите сообщение">
+        <input type="text" name="tag" placeholder="Введите тег">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+<div>Список сообщений</div>
+<form method="post" action="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <input type="text" name="filter" >
+    <button type="submit">Найти</button>
+</form>
+
+
+{{#messages}}
+
+
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{tag}}</i>
+        <strong>{{authorName}}</strong>
+    </div>
+
+{{/messages}}
+
+</body>
+</html>
