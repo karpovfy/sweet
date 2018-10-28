@@ -3,25 +3,27 @@
 <@c.page>
 
 List of users
-
-<table>
-    <thead>
+<div class="table-responsive-md">
+<table class="table table-striped table-bordered table-hover">
+    <thead >
     <tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Roles</th>
+        <th scope="col">Email</th>
+        <th scope="col">Operation</th>
     </tr>
     </thead>
     <tbody>
     <#list users as user>
     <tr>
-        <td>${user.username}</td>
+        <td scope="row">${user.username}</td>
         <td><#list user.roles as role>${role}<#sep>, </#list></td>
+        <td> ${user.email?if_exists}</td>
         <td><a href="/user/${user.id}">edit</a></td>
     </tr>
     </#list>
     </tbody>
 </table>
-
+</div>
 
 </@c.page>

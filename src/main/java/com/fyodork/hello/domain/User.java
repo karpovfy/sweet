@@ -20,11 +20,16 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private boolean active;
+    private String email;
+    private String activationCode;
 
 
     @ElementCollection(targetClass = Role.class,fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role",joinColumns = @JoinColumn(name="user_id"))
     @Enumerated(EnumType.STRING)
+
+
+
     private Set<Role> roles;
 
     public Long getId() {
@@ -37,6 +42,12 @@ public class User implements UserDetails {
 
     public String getUsername() {
         return username;
+    }
+
+
+    public boolean isAdmin()
+    {
+        return roles.contains(Role.ADMIN);
     }
 
     @Override
@@ -90,5 +101,21 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 }

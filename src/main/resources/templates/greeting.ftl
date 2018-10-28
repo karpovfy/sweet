@@ -2,10 +2,9 @@
 
 <@c.page>
 
+<h5>Hello guest</h5>
 <div>
-Прiвет+
+    This is simple clone of twitter
 </div>
-
-<a href="/main">main page</a>
 
 </@c.page>
