@@ -37,12 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     private UserService userService;
 
 
-    @Bean
 
-    public PasswordEncoder getPasswordEncoder()
-    {
-        return new BCryptPasswordEncoder(8);
-    }
 
 
     @Override
@@ -56,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                     .formLogin()
                     .loginPage("/login")
                     .permitAll()
+                .and()
+                    .rememberMe()
                 .and()
                     .logout()
                     .permitAll();

@@ -20,7 +20,7 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label"> Password: </label>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 ">
         <input type="password" name="password"
                class="form-control ${(passwordError??)?string('is-invalid', '')}"
                placeholder="Password"/>
@@ -60,11 +60,26 @@
                     </div>
                 </#if>
             </div>
-        </div
-    </div>
+
+
+
+        <div class="col-sm-6  mt-3">
+            <div class="g-recaptcha" data-sitekey="6LcKrHkUAAAAAE-Xc2LzH5KJKR6LpLrvyEtUX9KY"></div>
+                 <#if captchaError??>
+                <div class="alert alert-danger" role="alert">
+                    ${captchaError}
+                </div>
+                 </#if>
+        </div>
+
+        </div>
+
     </#if>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-  <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
+    <div class=" mb-3">
+          <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
+
+    </div>
     <button class="btn btn-primary" type="submit"><#if isRegisterForm>Create<#else>Sign In</#if></button>
 </form>
 
